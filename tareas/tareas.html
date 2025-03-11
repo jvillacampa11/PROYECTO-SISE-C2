@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager | Tareas | SISE</title>
+    <link rel="stylesheet" href="tareas.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/tareas/tareas.html">Tareas</a></li>
+                <li><a href="/proyectos/proyectos.html">Proyectos</a></li>
+                <li><a href="/contacto/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="tareas-container">
+        <article class="tarea">
+            <h2>Práctica 1: HTML Básico</h2>
+            <p>Entrega: 10 de marzo de 2025</p>
+            <p>Estado: Pendiente</p>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="archivo" accept=".pdf,.doc,.docx">
+                <button type="submit">Subir</button>
+            </form>
+        </article>
+
+        <article class="tarea">
+            <h2>Práctica 2: CSS y Diseño</h2>
+            <p>Entrega: 17 de marzo de 2025</p>
+            <p>Estado: Pendiente</p>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="archivo" accept=".pdf,.doc,.docx">
+                <button type="submit">Subir</button>
+            </form>
+        </article>
+
+        <article class="tarea">
+            <h2>Proyecto: Landing Page</h2>
+            <p>Entrega: 25 de marzo de 2025</p>
+            <p>Estado: Pendiente</p>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="archivo" accept=".pdf,.doc,.docx">
+                <button type="submit">Subir</button>
+            </form>
+        </article>
+    </section>
+</main>
+    
+
+</body>
+</html>

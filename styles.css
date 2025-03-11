@@ -72,6 +72,11 @@ h1 {
     gap: 20px;
 }
 
+.card-container img {
+    height: 200px;
+    width: auto;
+}
+
 .card {
     padding: 20px;
     background-color: #2c3e50;
