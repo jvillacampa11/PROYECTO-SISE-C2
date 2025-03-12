@@ -35,3 +35,65 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: #34495e;
 }
+
+.contacto {
+    text-align: center;
+    margin: 50px auto;
+    width: 60%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.perfil img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    text-align: left;
+}
+
+.info h2 {
+    color: #007bff;
+}
+
+.info p {
+    color: #666;
+    font-size: 16px;
+}
+
+.formulario {
+    margin-top: 20px;
+}
+
+.formulario input, .formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formulario button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #0056b3;
+}
