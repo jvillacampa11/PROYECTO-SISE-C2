@@ -35,3 +35,38 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: #34495e;
 }
+
+.proyecto {
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.proyecto h1 {
+    color: #333;
+}
+
+.proyecto img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.proyecto p, .proyecto ul {
+    color: #666;
+    font-size: 16px;
+    text-align: left;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.proyecto ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
