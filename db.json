@@ -1,0 +1,78 @@
+{
+    "categorias": [
+        {
+            "id": 1,
+            "nombre": "Tareas Pendientes",
+            "urlImagen": "img/pending-tasks.png",
+            "url": "/tareas-pendientes/tareas-pendientes.html",
+            "tareas": [
+                {
+                    "nombre": "Práctica HTML",
+                    "descripcion": "Crear una página web con etiquetas básicas",
+                    "fechaLimite": "15/03/2025",
+                    "nota": "0",
+                    "urlImagenTarea": "img/html.png"
+                },
+                {
+                    "nombre": "Ejercicio CSS",
+                    "descripcion": "Aplicar estilos avanzados",
+                    "fechaLimite": "20/03/2025",
+                    "nota": "0",
+                    "urlImagenTarea": "img/css.png"
+                },
+                {
+                    "nombre": "Proyecto JavaScript",
+                    "descripcion": "Programar una calculadora simple",
+                    "fechaLimite": "25/03/2025",
+                    "nota": "0",
+                    "urlImagenTarea": "img/js.png"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Tareas Completadas",
+            "urlImagen": "img/task.png",
+            "url": "/tareas-completadas/tareas-completadas.html",
+            "tareas": [
+                {
+                    "nombre": "Proyecto de CSS",
+                    "descripcion": "Diseñar una interfaz de usuario",
+                    "fechaLimite": "10/02/2025",
+                    "nota": "18/20",
+                    "urlImagenTarea": "img/user-interface.png"
+                },
+                {
+                    "nombre": "Ejercicio de JS",
+                    "descripcion": "Crear una calculadora avanzada",
+                    "fechaLimite": "05/02/2025",
+                    "nota": "20/20",
+                    "urlImagenTarea": "img/calculator.png"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "nombre": "Proyectos",
+            "urlImagen": "img/task-management.png",
+            "url": "/proyectos/proyectos.html",
+            "proyectos": [
+                {
+                    "nombre": "Sistema de Gestión de Tareas",
+                    "descripcion": "Desarrollar un sistema completo de gestión de tareas",
+                    "fechaLimite": "30/04/2025",
+                    "detalles": "El proyecto consiste en desarrollar un sistema de gestión de tareas donde los usuarios pueden agregar, editar y eliminar tareas. Se utilizarán tecnologías como Node.js, Express y MongoDB para el backend, y React para el frontend.",
+                    "imagenProyecto": "https://images.ctfassets.net/63bmaubptoky/PSQvd0V2h_8iNYwoQF5525u-ZpLZNUspHKeD8Wcj_dg/7f0480999d99e5b38cee121046956907/administrador-de-tarea-vs-gestor-de-proyectos.jpg?w=1000"
+
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nombre": "Soporte",
+            "urlImagen": "img/support.png",
+            "descripcion": "Si necesitas ayuda, envíanos un mensaje.",
+            "formulario": true
+        }
+    ]
+}

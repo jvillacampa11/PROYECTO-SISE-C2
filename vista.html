@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Tareas</title>
+    <style>
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .task {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .task h4 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <h1>Tareas de la Categoría</h1>
+    <div id="tasks-container"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryId = urlParams.get('id');
+
+        fetch('db.json')
+            .then(response => response.json())
+            .then(data => {
+                const tasksContainer = document.getElementById('tasks-container');
+                const tasks = data.productos.filter(product => product.idCategoria == categoryId);
+                tasks.forEach(task => {
+                    const taskDiv = document.createElement('div');
+                    taskDiv.classList.add('task');
+
+                    const h4 = document.createElement('h4');
+                    h4.innerText = task.nombre;
+                    const p = document.createElement('p');
+                    p.innerText = `Descripción: ${task.descripcion}`;
+                    const price = document.createElement('p');
+                    price.innerText = `Precio: $${task.precio}`;
+
+                    taskDiv.appendChild(h4);
+                    taskDiv.appendChild(p);
+                    taskDiv.appendChild(price);
+                    tasksContainer.appendChild(taskDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas Pendientes</title>
-    <link rel="stylesheet" href="/tareas-pendientes/tareas-pendientes.css">
+    <link rel="stylesheet" href="tareas-pendientes.css">
 </head>
 <body>
     <header>
@@ -19,24 +19,43 @@
                     <th>Fecha Límite</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Práctica HTML</td>
-                    <td>Crear una página web con etiquetas básicas</td>
-                    <td>15/03/2025</td>
-                </tr>
-                <tr>
-                    <td>Ejercicio CSS</td>
-                    <td>Aplicar estilos avanzados</td>
-                    <td>20/03/2025</td>
-                </tr>
-                <tr>
-                    <td>Proyecto JavaScript</td>
-                    <td>Programar una calculadora simple</td>
-                    <td>25/03/2025</td>
-                </tr>
+            <tbody id="tareas-pendientes-body">
             </tbody>
         </table>
     </main>
+
+    <script>
+        fetch('/db.json')
+            .then(response => response.json())
+            .then(data => {
+                const tareasPendientes = data.categorias.find(cat => cat.nombre === 'Tareas Pendientes');
+
+                if (tareasPendientes) {
+                    const tareasBody = document.getElementById('tareas-pendientes-body');
+
+                    tareasPendientes.tareas.forEach(tarea => {
+                        const row = document.createElement('tr');
+
+                        const tdNombre = document.createElement('td');
+                        tdNombre.textContent = tarea.nombre;
+
+                        const tdDescripcion = document.createElement('td');
+                        tdDescripcion.textContent = tarea.descripcion;
+
+                        const tdFechaLimite = document.createElement('td');
+                        tdFechaLimite.textContent = tarea.fechaLimite;
+
+                        row.appendChild(tdNombre);
+                        row.appendChild(tdDescripcion);
+                        row.appendChild(tdFechaLimite);
+
+                        tareasBody.appendChild(row);
+                    });
+                } else {
+                    console.error("No se encontró la categoría de Tareas Pendientes en el db.json");
+                }
+            })
+            .catch(error => console.error('Error al cargar el db.json:', error));
+    </script>
 </body>
 </html>

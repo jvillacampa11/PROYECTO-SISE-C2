@@ -11,32 +11,49 @@
         <h1>Tareas Completadas</h1>
     </header>
     <main>
-        <table>
+        <table id="tareas-completadas">
             <thead>
                 <tr>
                     <th>Tarea</th>
                     <th>Descripción</th>
                     <th>Nota</th>
+                    <th>Fecha Límite</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Proyecto HTML</td>
-                    <td>Creación de una página web básica</td>
-                    <td>18/20</td>
-                </tr>
-                <tr>
-                    <td>Ejercicio CSS</td>
-                    <td>Aplicación de estilos avanzados</td>
-                    <td>20/20</td>
-                </tr>
-                <tr>
-                    <td>JavaScript Básico</td>
-                    <td>Uso de eventos y manipulación del DOM</td>
-                    <td>17/20</td>
-                </tr>
             </tbody>
         </table>
     </main>
+
+    <script>
+        fetch('/db.json')
+            .then(response => response.json()) 
+            .then(data => {
+                const tareasCompletadas = data.categorias.find(categoria => categoria.nombre === "Tareas Completadas");
+
+                if (tareasCompletadas) {
+                    const tareasTabla = document.querySelector('#tareas-completadas tbody');
+                    tareasCompletadas.tareas.forEach(tarea => {
+                        const fila = document.createElement('tr');
+                        
+                        fila.innerHTML = `
+                            <td>${tarea.nombre}</td>
+                            <td>
+                                <!-- Imagen de la tarea -->
+                                <img src="../${tarea.urlImagenTarea}" alt="${tarea.nombre}" style="max-width: 100px; margin-bottom: 10px;">
+                                <p>${tarea.descripcion}</p>
+                            </td>
+                            <td>${tarea.nota}</td>
+                            <td>${tarea.fechaLimite}</td>
+                        `;
+                        
+                        tareasTabla.appendChild(fila);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error al cargar el archivo db.json:", error);
+            });
+    </script>
 </body>
 </html>

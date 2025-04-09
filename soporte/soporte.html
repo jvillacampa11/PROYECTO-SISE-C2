@@ -10,23 +10,37 @@
     <header>
         <h1>Centro de Soporte</h1>
     </header>
-    <main>
-        <section>
-            <h2>Contacto</h2>
-            <p>Si necesitas ayuda, envíanos un mensaje:</p>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+    <main id="main-content">
     </main>
+
+    <script>
+        fetch('/db.json')
+            .then(response => response.json())
+            .then(data => {
+                const soporte = data.categorias.find(cat => cat.nombre === 'Soporte');
+                if (soporte) {
+                    const mainContent = document.getElementById('main-content');
+                    const descripcion = document.createElement('section');
+                    descripcion.innerHTML = `
+                        <h2>Contacto</h2>
+                        <p>${soporte.descripcion}</p>
+                        <form>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" required>
+                            
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea id="mensaje" name="mensaje" required></textarea>
+                            
+                            <button type="submit">Enviar</button>
+                        </form>
+                    `;
+                    mainContent.appendChild(descripcion);
+                }
+            })
+            .catch(error => console.error('Error cargando el db.json:', error));
+    </script>
 </body>
 </html>

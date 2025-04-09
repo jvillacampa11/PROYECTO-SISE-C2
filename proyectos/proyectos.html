@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager | Proyectos | SISE</title>
+    <title>Proyectos</title>
     <link rel="stylesheet" href="proyectos.css">
 </head>
 <body>
@@ -19,19 +19,48 @@
     </header>
 
     <main>
-        <div class="proyecto">
-            <h1>Proyecto Final: Creación de una Página Web</h1>
-            <img src="/img/proyecto-web.png" alt="Imagen de un desarrollo web">
-            <p>El alumno deberá desarrollar una página web con un **tema libre**, aplicando los conocimientos adquiridos en el curso. Se evaluará el diseño, funcionalidad y usabilidad.</p>
-            <h2>Requisitos:</h2>
-            <ul>
-                <li>Debe contener al menos 3 secciones (Inicio, Contacto, Información).</li>
-                <li>Uso de HTML, CSS y JavaScript básico.</li>
-                <li>Diseño responsivo para diferentes dispositivos.</li>
-                <li>Publicación en un servidor o uso de GitHub Pages.</li>
-            </ul>
-        </div>
+        <div id="proyectos-container"></div>
     </main>
 
+    <script>
+        fetch('/db.json')
+            .then(response => response.json())
+            .then(data => {
+                const proyectos = data.categorias.find(cat => cat.id === 3).proyectos;
+                const container = document.getElementById('proyectos-container');
+
+                proyectos.forEach(proyecto => {
+                    const proyectoElement = document.createElement('div');
+                    proyectoElement.classList.add('proyecto');
+
+                    const imagenProyecto = document.createElement('img');
+                    imagenProyecto.src = proyecto.imagenProyecto; 
+                    imagenProyecto.alt = proyecto.nombre;
+
+                    const nombre = document.createElement('h2');
+                    nombre.textContent = proyecto.nombre;
+
+                    const descripcion = document.createElement('p');
+                    descripcion.textContent = proyecto.descripcion;
+
+                    const detalles = document.createElement('p');
+                    detalles.textContent = proyecto.detalles;
+                    detalles.classList.add('detalles');
+
+                    const nota = document.createElement('p');
+                    nota.textContent = `Fecha límite: ${proyecto.fechaLimite}`;
+                    nota.classList.add('nota');
+
+                    proyectoElement.appendChild(imagenProyecto);
+                    proyectoElement.appendChild(nombre);
+                    proyectoElement.appendChild(descripcion);
+                    proyectoElement.appendChild(detalles);
+                    proyectoElement.appendChild(nota);
+
+                    container.appendChild(proyectoElement);
+                });
+            })
+            .catch(error => console.error('Error cargando el archivo JSON:', error));
+    </script>
 </body>
 </html>
